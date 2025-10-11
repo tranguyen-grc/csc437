@@ -1,31 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Receipt</title>
-  </head>
-  <body>
-    <p><a href="index.html">Home</a></p>
-    <h1>Receipt</h1>
-    <p>Template for a purchase record.</p>
+<head>
+  <meta charset="utf-8">
+  <title>Receipt</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <p><a href="group.html">Back to Group</a></p>
+  <h1>Receipt</h1>
 
-    <h2>Properties</h2>
-    <dl>
-      <dt>Merchant</dt>
-      <dd>Taqueria El Sol</dd>
-      <dt>Date</dt>
-      <dd>2025-09-20</dd>
-      <dt>Payer</dt>
-      <dd><a href="roommate-creditor.html">Alex Example</a></dd>
-    </dl>
+  <h2>Header</h2>
+  <dl>
+    <dt>Merchant</dt><dd>Taqueria El Sol</dd>
+    <dt>Date</dt><dd>2025-09-20</dd>
+    <dt>Payer</dt><dd><a href="member.html">Alex</a></dd>
+  </dl>
 
-    <h2>Components</h2>
-    <ul>
-      <li><a href="item.html">Item</a> (e.g., Chicken Burrito)</li>
-      <li><a href="tax.html">Tax</a></li>
-      <li><a href="tip.html">Tip</a></li>
-      <li><a href="discount.html">Discount</a></li>
-      <li><a href="total.html">Total</a></li>
-    </ul>
-  </body>
+  <h2>Items</h2>
+  <ul>
+    <li><a href="item.html">Chicken Burrito</a> — <a href="price.html">$8.95</a> — Shared by Alex, Sam</li>
+    <li><a href="item.html">Chips &amp; Salsa</a> — <a href="price.html">$4.00</a> — Shared by Alex</li>
+  </ul>
+
+  <h2>Charges</h2>
+  <dl>
+    <dt>Tax</dt><dd><a href="tax.html">$1.16</a></dd>
+    <dt>Tip</dt><dd><a href="tip.html">$2.00</a></dd>
+    <dt>Discount</dt><dd><a href="discount.html">$0.00</a></dd>
+    <dt>Total</dt><dd><a href="total.html">$16.11</a></dd>
+  </dl>
+
+  <p>Settlement ticket: <a href="ticket.html">Sam → Alex $12.40</a></p>
+</body>
 </html>
