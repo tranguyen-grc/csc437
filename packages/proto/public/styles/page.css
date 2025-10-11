@@ -1,0 +1,31 @@
+html, body { margin:0; padding:0; }
+
+body {
+  background-color: var(--color-bg-page);
+  color: var(--color-text);
+  font: var(--font-size-base)/var(--line-height-base) var(--font-family);
+}
+
+header {
+  background-color: var(--color-bg-header);
+  color: var(--color-text-header);
+  padding: var(--space-3) var(--space-4);
+}
+
+h1, h2, h3 { color: var(--color-accent); }
+
+a { color: var(--color-link); }
+a:hover { text-decoration: underline; }
+
+.card {
+  background-color: var(--color-card-bg);
+  border: var(--border-1);
+  border-radius: var(--radius-1);
+  padding: var(--space-2) var(--space-3);
+  margin: var(--space-2) 0;
+}
+
+.rule-top {
+  border-top: var(--border-thick);
+  padding-top: var(--space-1);
+}

@@ -1,28 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Expense Splitter: Home</title>
-</head>
-<body>
-  <h1>Expense Splitter</h1>
+  <head>
+    <meta charset="utf-8" />
+    <title>Expense Splitter — Home</title>
+    <!-- Link to shared styles -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Expense Splitter</h1>
+    </header>
 
-  <section>
-    <h2>Roommate Groups</h2>
-    <p><a href="group.html">Create a new group / Open your group</a></p>
-  </section>
+    <main>
+      <section class="card">
+        <h2>Roommate Groups</h2>
+        <p><a href="group.html">Create or Access a Group</a></p>
+      </section>
 
-  <section>
-    <h2>Your Dashboard</h2>
-    <h3>You owe</h3>
-    <ul>
-      <li>You → Alex: $12.40 <a href="ticket.html">view ticket</a></li>
-    </ul>
+      <section class="card rule-top">
+        <h2>Your Dashboard</h2>
 
-    <h3>Owed to you</h3>
-    <ul>
-      <li>Jordan → You: $8.50 <a href="ticket.html">view ticket</a></li>
-    </ul>
-  </section>
-</body>
+        <h3>You owe</h3>
+        <ul>
+          <li>You → Alex: $12.40 <a href="ticket.html">View Ticket</a></li>
+        </ul>
+
+        <h3>Owed to you</h3>
+        <ul>
+          <li>Jordan → You: $8.50 <a href="ticket.html">View Ticket</a></li>
+        </ul>
+      </section>
+    </main>
+  </body>
 </html>
