@@ -8,37 +8,68 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="/styles/reset.css" />
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/page.css" />
 </head>
 <body>
-  <header>
+  <header class="app-header">
+    <div class="brand">
+      <a href="index.html" class="brand-link">
+        <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+        SplitRoom
+      </a>
+    </div>
+
+    <nav class="top-nav">
+      <a href="group.html">Groups</a>
+      <a href="receipt.html">Receipts</a>
+      <a href="member.html">
+        <svg class="icon">
+          <use href="/icons/receipt.svg#icon-user" />
+        </svg>
+        Alex
+      </a>
+    </nav>
+  </header>
+  
+  <div class="title span-12">
     <p><a href="group.html">
       <svg class="icon">
         <use href="/icons/receipt.svg#icon-back" />
       </svg>
       Back to Group
     </a></p>
-  </header>
+  </div>
+  <main class="page">
+    <div class="grid">
 
-  <section class="card">
-    <h1>
-      <svg class="icon">
-        <use href="/icons/receipt.svg#icon-user" />
-      </svg>
-      Roommate
-    </h1>
     
-    <dl>
-      <dt>Name</dt><dd>Alex Example</dd>
-      <dt>Email</dt><dd>alex@example.com</dd>
-      <dt>Role</dt><dd>Needs to get paid (creditor)</dd>
-      <dt>Balance</dt><dd>Owed $12.40</dd>
-    </dl>
-  </section>
+      <section class="card span-12">
+        <h1>
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-user" />
+          </svg>
+          Roommate
+        </h1>
+        
+        <dl class="props">
+          <dt>Name</dt><dd>Alex Example</dd>
+          <dt>Email</dt><dd>alex@example.com</dd>
+          <dt>Role</dt><dd>Needs to get paid (creditor)</dd>
+          <dt>Balance</dt><dd>Owed $12.40</dd>
+        </dl>
+      </section>
+    
+      <section class="card rule-top span-12">
+        <h2>Related</h2>
+        <ul>
+          <li>Group: <a href="group.html">House 1</a></li>
+          <li>Receipt: <a href="receipt.html">Latest Receipt</a>
+          </ul>
+      </section>
+    </div>
 
-  <section class="card rule-top">
-    <h2>Related</h2>
-    <ul>
-      <li>Group: <a href="group.html">House 1</a></li>
-      <li>Receipt: <a href="receipt.html">Latest Receipt</a>
+  </main>
+</body>
+</html>

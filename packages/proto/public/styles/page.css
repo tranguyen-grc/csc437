@@ -33,14 +33,21 @@ a:hover { text-decoration: underline; }
   border: var(--border-1);
   border-radius: var(--radius-1);
   padding: var(--space-2) var(--space-3);
-  margin: var(--space-2) 0;
 }
 
-header {
+.props {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--space-4);
+  row-gap: var(--space-2);
+}
+.props dt { font-weight: 600; color: var(--color-accent); }
+.props dd { margin: 0; }
+
+.title {
   padding: var(--space-2) var(--space-3);
   margin: var(--space-2) 0;
 }
-
 
 
 .rule-top {
@@ -60,4 +67,69 @@ svg.icon {
   vertical-align: text-bottom;
   fill: currentColor;
   
+}
+
+/* Header layout */
+.app-header {
+  position: sticky; top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* brand | title | nav | user */
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--header-h);
+  padding: var(--space-1) var(--space-3);
+  background: var(--header-bg);
+  color: var(--header-text);
+  background-color: var(--color-text-header);
+}
+
+.app-header a { color: inherit; text-decoration: none; }
+.app-header .brand-link { display: inline-flex; align-items: center; gap: .5ch; font-weight: 700; }
+
+.app-header .page-title h1 {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.top-nav { display: flex; gap: var(--space-4); justify-content: right; }
+
+/* Page container */
+.page {
+  max-width: var(--container-max);
+  margin: 0 var(--space-2);
+}
+
+/* 12-col grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+}
+
+.span-12 { grid-column: span 12; }
+.span-9  { grid-column: span 9; }
+.span-8  { grid-column: span 8; }
+.span-6  { grid-column: span 6; }
+.span-4  { grid-column: span 4; }
+.span-3  { grid-column: span 3; }
+
+@media (max-width: 1200px) {
+  .grid { grid-template-columns: repeat(8, 1fr); }
+  .span-9 { grid-column: span 8; }
+  .span-8 { grid-column: span 8; }
+  .span-6 { grid-column: span 4; } /* halves on 8-col */
+  .span-4 { grid-column: span 4; }
+  .span-3 { grid-column: span 4; } /* 3 -> ~4 on 8-col */
+}
+
+@media (max-width: 720px) {
+  .app-header { grid-template-columns: 1fr 1fr; row-gap: var(--space-2); height: auto; padding: var(--space-4); }
+  .top-nav { justify-content: end; }
+
+  .grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+  .span-12, .span-9, .span-8, .span-6, .span-4, .span-3 { grid-column: span 4; }
+
+  .page { padding: var(--space-4); }
 }
