@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>Expense Splitter — Home</title>
-    <!-- Link to shared styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
+      rel="stylesheet">
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
   </head>
@@ -14,8 +18,18 @@
 
     <main>
       <section class="card">
-        <h2>Roommate Groups</h2>
-        <p><a href="group.html">Create or Access a Group</a></p>
+        <h2>
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-house" />
+          </svg>
+          Roommate Groups
+        </h2>
+        <p><a href="group.html">
+          <svg class="icon">
+        <use href="/icons/receipt.svg#icon-plus" />
+      </svg>
+          Create or Access a Group
+        </a></p>
       </section>
 
       <section class="card rule-top">
@@ -23,12 +37,32 @@
 
         <h3>You owe</h3>
         <ul>
-          <li>You → Alex: $12.40 <a href="ticket.html">View Ticket</a></li>
+          <li>
+            <p>
+              You → Alex: $12.40
+            </p> 
+            <a href="ticket.html">
+              <svg class="icon">
+                <use href="/icons/receipt.svg#icon-trading" />
+              </svg>
+              View Ticket
+            </a>
+          </li>
         </ul>
 
         <h3>Owed to you</h3>
         <ul>
-          <li>Jordan → You: $8.50 <a href="ticket.html">View Ticket</a></li>
+          <li>
+            <p>
+              Jordan → You: $8.50 
+            </p>
+            <a href="ticket.html">
+              <svg class="icon">
+                <use href="/icons/receipt.svg#icon-trading" />
+              </svg>
+              View Ticket
+            </a>
+          </li>
         </ul>
       </section>
     </main>

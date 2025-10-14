@@ -3,16 +3,32 @@
 <head>
   <meta charset="utf-8">
   <title>Receipt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/page.css" />
 </head>
 <body>
-  <p><a href="group.html">Back to Group</a></p>
+  <header>
+    <p><a href="group.html">
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-back" />
+      </svg>
+      Back to Group
+    </a></p>
+  </header>
 
   <section class="card">
-    <h1>Receipt</h1>
+    <h1>
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-receipt" />
+      </svg>
+      Receipt
+    </h1>
 
-    <h2>Header</h2>
     <dl>
       <dt>Merchant</dt><dd>Taqueria El Sol</dd>
       <dt>Date</dt><dd>2025-09-20</dd>
@@ -21,7 +37,12 @@
   </section>
 
   <section class="card rule-top">
-    <h2>Items</h2>
+    <h2>
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-item" />
+      </svg>
+      Items
+    </h2>
     <ul>
       <li><a href="item.html">Chicken Burrito</a> — <a href="price.html">$8.95</a> — Shared by Alex, Sam</li>
       <li><a href="item.html">Chips &amp; Salsa</a> — <a href="price.html">$4.00</a> — Shared by Alex</li>
@@ -29,7 +50,12 @@
   </section>
 
   <section class="card rule-top">
-    <h2>Charges</h2>
+    <h2>
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-dollar" />
+      </svg>
+      Charges
+    </h2>
     <dl>
       <dt>Tax</dt><dd><a href="tax.html">$1.16</a></dd>
       <dt>Tip</dt><dd><a href="tip.html">$2.00</a></dd>

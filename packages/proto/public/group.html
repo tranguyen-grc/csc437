@@ -3,14 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>Roommate Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/page.css" />
 </head>
 <body>
-  <p><a href="index.html">Home</a></p>
+  <header>
+    <p><a href="index.html">Home</a></p>
+  </header>
 
   <section class="card">
-    <h1>Alpha House</h1>
+    <h1>
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-house" />
+      </svg>
+      House 1
+    </h1>
 
     <h2>Members</h2>
     <ul>
@@ -21,15 +33,30 @@
   </section>
 
   <section class="card rule-top">
-    <h2>Receipts</h2>
-    <p><a href="receipt.html">Add a receipt</a></p>
+    <h2>
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-receipt" />
+      </svg>
+      Receipts
+    </h2>
+    <p><a href="receipt.html">
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-plus" />
+      </svg>
+      Add a receipt
+    </a></p>
     <ul>
       <li><a href="receipt.html">Receipt — Taqueria El Sol</a></li>
     </ul>
   </section>
 
   <section class="card rule-top">
-    <h2>Open Tickets</h2>
+    <h2>
+      <svg class="icon">
+        <use href="/icons/receipt.svg#icon-trading" />
+      </svg>
+      Open Tickets
+    </h2>
     <ul>
       <li>Sam owes Alex $12.40 — <a href="ticket.html">View / Mark Paid</a></li>
     </ul>
