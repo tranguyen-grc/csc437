@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server"
+    "start": "http-server -p 3000"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
