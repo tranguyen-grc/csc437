@@ -44,4 +44,25 @@
   /* Borders */
   --border-1: 1px solid var(--color-card-border);
   --border-thick: 3px solid var(--color-rule);
+
+  
+}
+
+body.dark-mode {
+  /* Page & text */
+  --color-bg-page:        #0e1116;  /* deep gray-blue */
+  --color-text:           #e8eaed;  /* near white */
+
+  /* Header */
+  --header-bg:            #141a22;
+  --header-text:          #e8eaed;
+
+  /* Cards / surfaces */
+  --color-card-bg:        #151922;
+  --border-1:             1px solid #2a3140;
+  --border-thick:         3px solid #2a3140;
+
+  /* Accents & links */
+  --color-accent:         #8ab4f8;  /* soft blue */
+  --color-link:           var(--color-accent);
 }

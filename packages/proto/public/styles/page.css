@@ -69,31 +69,48 @@ svg.icon {
   
 }
 
-/* Header layout */
+/* --- Header layout --- */
 .app-header {
-  position: sticky; top: 0;
+  position: sticky;
+  top: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* brand | title | nav | user */
+  grid-template-columns: auto auto 1fr; /* brand | toggle | nav fills remaining */
   align-items: center;
   gap: var(--space-4);
   height: var(--header-h);
   padding: var(--space-1) var(--space-3);
   background: var(--header-bg);
   color: var(--header-text);
-  background-color: var(--color-text-header);
+  background-color: var(--color-bg-page);
 }
 
-.app-header a { color: inherit; text-decoration: none; }
-.app-header .brand-link { display: inline-flex; align-items: center; gap: .5ch; font-weight: 700; }
-
-.app-header .page-title h1 {
-  margin: 0;
-  font-family: var(--font-family-display);
+.app-header .brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
   font-weight: 700;
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
 }
 
-.top-nav { display: flex; gap: var(--space-4); justify-content: right; }
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4ch;
+  font-size: 0.95em;
+  opacity: 0.9;
+  justify-self: start;      
+}
+
+.top-nav {
+  display: flex;
+  gap: var(--space-4);
+  justify-self: end;        
+}
+
+.app-header a {
+  color: inherit;
+  text-decoration: none;
+}
+
 
 /* Page container */
 .page {
@@ -132,4 +149,17 @@ svg.icon {
   .span-12, .span-9, .span-8, .span-6, .span-4, .span-3 { grid-column: span 4; }
 
   .page { padding: var(--space-4); }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  font-size: 0.95em;
+  opacity: 0.9;
+}
+
+.theme-toggle input {
+  inline-size: 1.1em;
+  block-size: 1.1em;
 }
