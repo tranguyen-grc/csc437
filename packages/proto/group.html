@@ -85,12 +85,27 @@
           </svg>
           Open Tickets
         </h2>
-        <ul>
-          <li>Sam owes Alex $12.40 — <a href="ticket.html">View / Mark Paid</a></li>
-        </ul>
+        <sr-ticket
+          from="Sam"
+          to="Alex"
+          amount="12.40"
+          href="/ticket.html"
+          status="open"
+        >
+          View / Mark Paid
+        </sr-ticket>
       </section>
     </div>
   </main>
+
+  <script type="module">
+    import { define } from "@calpoly/mustang";
+    import { SrTicketElement } from "/src/sr-ticket.ts";
+
+    define({
+      "sr-ticket": SrTicketElement
+    });
+  </script>
 
 </body>
 </html>

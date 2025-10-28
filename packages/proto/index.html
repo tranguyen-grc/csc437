@@ -63,36 +63,37 @@
           <h2>Your Dashboard</h2>
   
           <h3>You owe</h3>
-          <ul>
-            <li>
-              <p>
-                You → Alex: $12.40
-              </p> 
-              <a href="ticket.html">
-                <svg class="icon">
-                  <use href="/icons/receipt.svg#icon-trading" />
-                </svg>
-                View Ticket
-              </a>
-            </li>
-          </ul>
-  
+          <sr-ticket
+            from="You"
+            to="Alex"
+            amount="12.40"
+            href="ticket.html"
+            status="open"
+          >
+            View Ticket
+          </sr-ticket>
+
           <h3>Owed to you</h3>
-          <ul>
-            <li>
-              <p>
-                Jordan → You: $8.50 
-              </p>
-              <a href="ticket.html">
-                <svg class="icon">
-                  <use href="/icons/receipt.svg#icon-trading" />
-                </svg>
-                View Ticket
-              </a>
-            </li>
-          </ul>
+          <sr-ticket
+            from="Jordan"
+            to="You"
+            amount="8.50"
+            href="ticket.html"
+            status="open"
+          >
+            View Ticket
+          </sr-ticket>
         </section>
       </div>
     </main>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { SrTicketElement } from "/src/sr-ticket.ts";
+
+      define({
+        "sr-ticket": SrTicketElement
+      });
+    </script>
+
   </body>
 </html>

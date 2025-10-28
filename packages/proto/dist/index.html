@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Expense Splitter — Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <script type="module" src="/scripts/theme.js"></script>
+    <script type="module" crossorigin src="/assets/main-CmTtnW3s.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-cCzuhWg9.js">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">
+          <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+          SplitRoom
+        </a>
+      </div>
+
+      <label id="theme-toggle" class="theme-toggle">
+        <input id="theme-input" type="checkbox" autocomplete="off" />
+        Dark mode
+      </label>
+
+      <nav class="top-nav">
+        <a href="group.html">Groups</a>
+        <a href="receipt.html">Receipts</a>
+        <a href="member.html">
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-user" />
+          </svg>
+          Alex
+        </a>
+      </nav>
+    </header>
+
+    <div class="title"></div>
+
+    <main class="page">
+      <div class="grid">
+
+        <section class="card span-12">
+          <h2>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-house" />
+            </svg>
+            Roommate Groups
+          </h2>
+          <p><a href="group.html">
+            <svg class="icon">
+          <use href="/icons/receipt.svg#icon-plus" />
+        </svg>
+            Create or Access a Group
+          </a></p>
+        </section>
+  
+        <section class="card rule-top span-12">
+          <h2>Your Dashboard</h2>
+  
+          <h3>You owe</h3>
+          <sr-ticket
+            from="You"
+            to="Alex"
+            amount="12.40"
+            href="ticket.html"
+            status="open"
+          >
+            View Ticket
+          </sr-ticket>
+
+          <h3>Owed to you</h3>
+          <sr-ticket
+            from="Jordan"
+            to="You"
+            amount="8.50"
+            href="ticket.html"
+            status="open"
+          >
+            View Ticket
+          </sr-ticket>
+        </section>
+      </div>
+    </main>
+
+  </body>
+</html>
