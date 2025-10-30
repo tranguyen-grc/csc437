@@ -63,15 +63,7 @@
           <h2>Your Dashboard</h2>
   
           <h3>You owe</h3>
-          <sr-ticket
-            from="You"
-            to="Alex"
-            amount="12.40"
-            href="ticket.html"
-            status="open"
-          >
-            View Ticket
-          </sr-ticket>
+          <sr-ticket-list src="/data/tickets.json"></sr-ticket-list>
 
           <h3>Owed to you</h3>
           <sr-ticket
@@ -94,6 +86,13 @@
         "sr-ticket": SrTicketElement
       });
     </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { SrTicketListElement } from "/src/sr-ticket-list.js";
+      define({ "sr-ticket-list": SrTicketListElement });
+    </script>
+
+    
 
   </body>
 </html>

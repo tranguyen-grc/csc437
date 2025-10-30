@@ -1,0 +1,18 @@
+[
+  {
+    "from": "You",
+    "to": "Sam",
+    "amount": "8.50",
+    "href": "/ticket.html",
+    "status": "open",
+    "label": "View / Mark Paid"
+  },
+  {
+    "from": "You",
+    "to": "Alex",
+    "amount": "12.40",
+    "href": "/ticket.html",
+    "status": "open",
+    "label": "View / Mark Paid"
+  }
+]
