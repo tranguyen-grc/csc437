@@ -10,7 +10,15 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         group: resolve(__dirname, "group.html"),
-        receipt: resolve(__dirname, "receipt.html")
+        receipt: resolve(__dirname, "receipt.html"),
+        discount: resolve(__dirname, "discount.html"),
+        item: resolve(__dirname, "item.html"),
+        member: resolve(__dirname, "member.html"),
+        price: resolve(__dirname, "price.html"),
+        tax: resolve(__dirname, "tax.html"),
+        ticket: resolve(__dirname, "ticket.html"),
+        tip: resolve(__dirname, "tip.html"),
+        total: resolve(__dirname, "total.html")
       }
     }
   }

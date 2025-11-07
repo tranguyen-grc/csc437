@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Total</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles/reset.css" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/page.css" />
+  <script type="module" src="/scripts/theme.js"></script>
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <a href="index.html" class="brand-link">
+        <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+        SplitRoom
+      </a>
+    </div>
+
+    <label id="theme-toggle" class="theme-toggle">
+      <input id="theme-input" type="checkbox" autocomplete="off" />
+      Dark mode
+    </label>
+
+    <nav class="top-nav">
+      <a href="group.html">Groups</a>
+      <a href="receipt.html">Receipts</a>
+      <a href="member.html">
+        <svg class="icon">
+          <use href="/icons/receipt.svg#icon-user" />
+        </svg>
+        Alex
+      </a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <div class="title">
+      <p><a href="receipt.html">
+        <svg class="icon">
+          <use href="/icons/receipt.svg#icon-back" />
+        </svg>
+        Back to Receipt
+      </a></p>
+    </div>
+  
+    <section class="card">
+      <h1>Total</h1>
+      <dl class="props">
+        <dt>Amount</dt><dd>16.11</dd>
+        <dt>Currency</dt><dd>USD</dd>
+        <dt>Computed From</dt>
+        <dd>Items + <a href="tax.html">Tax</a> + <a href="tip.html">Tip</a> − <a href="discount.html">Discount</a></dd>
+        <dt>Receipt</dt><dd><a href="receipt.html">Receipt</a></dd>
+      </dl>
+    </section>
+  </main>
+
+</body>
+</html>

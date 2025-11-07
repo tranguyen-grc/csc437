@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
     <script type="module" src="/scripts/theme.js"></script>
-    <script type="module" crossorigin src="/assets/main-DXi4e95Q.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-CHmJi7ma.js">
+    <script type="module" crossorigin src="/assets/main-rJntgcuO.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-CErIJbA5.js">
+    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-list-CQYvE-VH.js">
   </head>
   <body>
     <header class="app-header">
@@ -64,19 +66,8 @@
         <section class="card rule-top span-12">
           <h2>Your Dashboard</h2>
   
-          <h3>You owe</h3>
-          <sr-ticket-list src="/data/tickets.json"></sr-ticket-list>
-
-          <h3>Owed to you</h3>
-          <sr-ticket
-            from="Jordan"
-            to="You"
-            amount="8.50"
-            href="ticket.html"
-            status="open"
-          >
-            View Ticket
-          </sr-ticket>
+          <h3>Open Tickets</h3>
+          <sr-ticket-list></sr-ticket-list>
         </section>
       </div>
     </main>

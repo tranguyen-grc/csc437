@@ -20,16 +20,21 @@ export class SrTicketListElement extends LitElement {
       display: contents;
     }
     ul, li {
-        list-style: none;   /* 🚫 removes bullets */
+        list-style: none; 
         padding: 0;
         margin: 0;
     }
     li { margin: var(--space-2) 0; }
   `;
 
+  // connectedCallback() {
+  //   super.connectedCallback();
+  //   if (this.src) this.hydrate(this.src);
+  // }
   connectedCallback() {
-    super.connectedCallback();
-    if (this.src) this.hydrate(this.src);
+  super.connectedCallback();
+  const url = this.src || "/api/tickets";
+  this.hydrate(url);
   }
 
   private async hydrate(url: string) {

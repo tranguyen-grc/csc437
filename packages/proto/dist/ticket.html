@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Roommate Group</title>
+  <title>Ticket</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/page.css" />
   <script type="module" src="/scripts/theme.js"></script>
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
 </head>
 <body>
   <header class="app-header">
@@ -39,71 +40,46 @@
     </nav>
   </header>
 
-  <div class="title"></div>
-
   <main class="page">
     <div class="grid">
+
+      <div class="title span-12">
+        <p><a href="group.html">
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-back" />
+          </svg>
+          Back to Group
+        </a></p>
+      </div>
+    
       <section class="card span-12">
         <h1>
           <svg class="icon">
-            <use href="/icons/receipt.svg#icon-house" />
-          </svg>
-          House 1
-        </h1>
-    
-        <h2>Members</h2>
-        <ul>
-          <li><a href="member.html">Alex</a></li>
-          <li><a href="member.html">Sam</a></li>
-          <li><a href="member.html">Jordan</a></li>
-        </ul>
-      </section>
-      
-    
-      <section class="card rule-top span-6">
-        <h2>
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-receipt" />
-          </svg>
-          Receipts
-        </h2>
-        <p><a href="receipt.html">
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-plus" />
-          </svg>
-          Add a receipt
-        </a></p>
-        <ul>
-          <li><a href="receipt.html">Receipt — Taqueria El Sol</a></li>
-        </ul>
-      </section>
-    
-      <section class="card rule-top span-6">
-        <h2>
-          <svg class="icon">
             <use href="/icons/receipt.svg#icon-trading" />
           </svg>
-          Open Tickets
-        </h2>
-          <sr-ticket-list></sr-ticket-list>
-
+          Ticket
+        </h1>
+        <p><strong>Sam → Alex: $12.40</strong></p>
+      </section>
+    
+      <section class="card rule-top span-12">
+        <h2>Details</h2>
+        <ul>
+          <li><a href="receipt.html">
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-receipt" />
+            </svg>
+            Receipt
+          </a></li>
+        </ul>
+    
+        <h3>Status</h3>
+        <p>Open</p>
+    
+        <h3>Action</h3>
       </section>
     </div>
+    
   </main>
-
-  <script type="module">
-      import { define } from "@calpoly/mustang";
-      import { SrTicketElement } from "/src/sr-ticket.ts";
-
-      define({
-        "sr-ticket": SrTicketElement
-      });
-    </script>
-    <script type="module">
-      import { define } from "@calpoly/mustang";
-      import { SrTicketListElement } from "/src/sr-ticket-list.js";
-      define({ "sr-ticket-list": SrTicketListElement });
-    </script>
-
 </body>
 </html>
