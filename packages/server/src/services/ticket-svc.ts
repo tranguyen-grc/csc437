@@ -29,13 +29,13 @@ TicketSchema.set("toJSON", {
 
 const TicketModel = model<Ticket>("Ticket", TicketSchema);
 
-// --------- Service API (consistent names) ---------
+// --------- Service API ---------
 function index(): Promise<Ticket[]> {
   return TicketModel.find().sort({ createdAt: -1 }).lean();
 }
 
 function get(id: string): Promise<Ticket | null> {
-  return TicketModel.findById(id).lean();
+  return TicketModel.findById(id);
 }
 
 function create(data: Partial<Ticket>): Promise<Ticket> {const { from, to, amount, href, status, label } = data;

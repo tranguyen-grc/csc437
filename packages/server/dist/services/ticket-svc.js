@@ -50,7 +50,7 @@ function index() {
   return TicketModel.find().sort({ createdAt: -1 }).lean();
 }
 function get(id) {
-  return TicketModel.findById(id).lean();
+  return TicketModel.findById(id);
 }
 function create(data) {
   const { from, to, amount, href, status, label } = data;
