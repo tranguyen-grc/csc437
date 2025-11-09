@@ -12,71 +12,76 @@
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/page.css" />
   <script type="module" src="/scripts/theme.js"></script>
-  <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
+  <script type="module" crossorigin src="/assets/member-BaXHji6d.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/state-A8dMvlyH.js">
+  <link rel="modulepreload" crossorigin href="/assets/header-DpmMVMPx.js">
 </head>
 <body>
-  <header class="app-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">
-        <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
-        SplitRoom
-      </a>
-    </div>
-
-    <label id="theme-toggle" class="theme-toggle">
-      <input id="theme-input" type="checkbox" autocomplete="off" />
-      Dark mode
-    </label>
-
-    <nav class="top-nav">
-      <a href="group.html">Groups</a>
-      <a href="receipt.html">Receipts</a>
-      <a href="member.html">
-        <svg class="icon">
-          <use href="/icons/receipt.svg#icon-user" />
-        </svg>
-        Alex
-      </a>
-    </nav>
-  </header>
+  <mu-auth provides="splitroom:auth">
+    <sr-header></sr-header>
+    <!-- <header class="app-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">
+          <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+          SplitRoom
+        </a>
+      </div>
   
-  <div class="title span-12">
-    <p><a href="group.html">
-      <svg class="icon">
-        <use href="/icons/receipt.svg#icon-back" />
-      </svg>
-      Back to Group
-    </a></p>
-  </div>
-  <main class="page">
-    <div class="grid">
-
-    
-      <section class="card span-12">
-        <h1>
+      <label id="theme-toggle" class="theme-toggle">
+        <input id="theme-input" type="checkbox" autocomplete="off" />
+        Dark mode
+      </label>
+  
+      <nav class="top-nav">
+        <a href="group.html">Groups</a>
+        <a href="receipt.html">Receipts</a>
+        <a href="member.html">
           <svg class="icon">
             <use href="/icons/receipt.svg#icon-user" />
           </svg>
-          Roommate
-        </h1>
-        
-        <dl class="props">
-          <dt>Name</dt><dd>Alex Example</dd>
-          <dt>Email</dt><dd>alex@example.com</dd>
-          <dt>Role</dt><dd>Needs to get paid (creditor)</dd>
-          <dt>Balance</dt><dd>Owed $12.40</dd>
-        </dl>
-      </section>
+          Alex
+        </a>
+      </nav>
+    </header> -->
     
-      <section class="card rule-top span-12">
-        <h2>Related</h2>
-        <ul>
-          <li>Group: <a href="group.html">House 1</a></li>
-          <li>Receipt: <a href="receipt.html">Latest Receipt</a>
-          </ul>
-      </section>
+    <div class="title span-12">
+      <p><a href="group.html">
+        <svg class="icon">
+          <use href="/icons/receipt.svg#icon-back" />
+        </svg>
+        Back to Group
+      </a></p>
     </div>
-
-  </main>
+    <main class="page">
+      <div class="grid">
+  
+      
+        <section class="card span-12">
+          <h1>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-user" />
+            </svg>
+            Roommate
+          </h1>
+          
+          <dl class="props">
+            <dt>Name</dt><dd>Alex Example</dd>
+            <dt>Email</dt><dd>alex@example.com</dd>
+            <dt>Role</dt><dd>Needs to get paid (creditor)</dd>
+            <dt>Balance</dt><dd>Owed $12.40</dd>
+          </dl>
+        </section>
+      
+        <section class="card rule-top span-12">
+          <h2>Related</h2>
+          <ul>
+            <li>Group: <a href="group.html">House 1</a></li>
+            <li>Receipt: <a href="receipt.html">Latest Receipt</a>
+            </ul>
+        </section>
+      </div>
+  
+    </main>
+  </mu-auth>
 </body>
 </html>

@@ -42,9 +42,13 @@ function setupCustomEventRelay() {
 }
 
 function setupBodyListener() {
-  document.body.addEventListener(CUSTOM_EVENT, (ev) => {
-    const checked = !!ev.detail?.checked;
-    applyTheme(checked ? "dark" : "light");
+  // document.body.addEventListener(CUSTOM_EVENT, (ev) => {
+  //   const checked = !!ev.detail?.checked;
+  //   applyTheme(checked ? "dark" : "light");
+  // });
+  document.body.addEventListener("darkmode:toggle", (e) => {
+    const { checked } = e.detail || {};
+    document.body.classList.toggle("dark-mode", !!checked);
   });
 }
 

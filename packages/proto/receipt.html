@@ -14,99 +14,102 @@
   <script type="module" src="/scripts/theme.js"></script>
 </head>
 <body>
-  <header class="app-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">
-        <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
-        SplitRoom
-      </a>
-    </div>
-
-    <label id="theme-toggle" class="theme-toggle">
-      <input id="theme-input" type="checkbox" autocomplete="off" />
-      Dark mode
-    </label>
-
-    <nav class="top-nav">
-      <a href="group.html">Groups</a>
-      <a href="receipt.html">Receipts</a>
-      <a href="member.html">
+  <mu-auth provides="splitroom:auth">
+    <sr-header></sr-header>
+    <!-- <header class="app-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">
+          <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+          SplitRoom
+        </a>
+      </div>
+  
+      <label id="theme-toggle" class="theme-toggle">
+        <input id="theme-input" type="checkbox" autocomplete="off" />
+        Dark mode
+      </label>
+  
+      <nav class="top-nav">
+        <a href="group.html">Groups</a>
+        <a href="receipt.html">Receipts</a>
+        <a href="member.html">
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-user" />
+          </svg>
+          Alex
+        </a>
+      </nav>
+    </header> -->
+  
+    <div class="title">
+      <p><a href="group.html">
         <svg class="icon">
-          <use href="/icons/receipt.svg#icon-user" />
+          <use href="/icons/receipt.svg#icon-back" />
         </svg>
-        Alex
-      </a>
-    </nav>
-  </header>
-
-  <div class="title">
-    <p><a href="group.html">
-      <svg class="icon">
-        <use href="/icons/receipt.svg#icon-back" />
-      </svg>
-      Back to Group
-    </a></p>
-  </div>
-
-  <main class="page">
-    <div class="grid">
-
-      <section class="card span-12">
-        <h1>
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-receipt" />
-          </svg>
-          Receipt
-        </h1>
-    
-        <dl class="props">
-          <dt>Merchant</dt><dd>Taqueria El Sol</dd>
-          <dt>Date</dt><dd>2025-09-20</dd>
-          <dt>Payer</dt><dd><a href="member.html">Alex</a></dd>
-        </dl>
-      </section>
-    
-      <section class="card rule-top span-4">
-        <h2>
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-item" />
-          </svg>
-          Items
-        </h2>
-        <ul>
-          <li><a href="item.html">Chicken Burrito</a> — <a href="price.html">$8.95</a> — Shared by Alex, Sam</li>
-          <li><a href="item.html">Chips &amp; Salsa</a> — <a href="price.html">$4.00</a> — Shared by Alex</li>
-        </ul>
-      </section>
-    
-      <section class="card rule-top span-4">
-        <h2>
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-dollar" />
-          </svg>
-          Charges
-        </h2>
-        <dl class="props">
-          <dt>Tax</dt><dd><a href="tax.html">$1.16</a></dd>
-          <dt>Tip</dt><dd><a href="tip.html">$2.00</a></dd>
-          <dt>Discount</dt><dd><a href="discount.html">$0.00</a></dd>
-          <dt>Total</dt><dd><a href="total.html">$16.11</a></dd>
-        </dl>
-      </section>
-    
-      <section class="card rule-top span-4">
-        <sr-ticket
-          from="Sam"
-          to="Alex"
-          amount="12.40"
-          href="/ticket.html"
-          status="open"
-        >
-          View / Mark Paid
-        </sr-ticket>
-      </section>
+        Back to Group
+      </a></p>
     </div>
-  </main>
+  
+    <main class="page">
+      <div class="grid">
+  
+        <section class="card span-12">
+          <h1>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-receipt" />
+            </svg>
+            Receipt
+          </h1>
+      
+          <dl class="props">
+            <dt>Merchant</dt><dd>Taqueria El Sol</dd>
+            <dt>Date</dt><dd>2025-09-20</dd>
+            <dt>Payer</dt><dd><a href="member.html">Alex</a></dd>
+          </dl>
+        </section>
+      
+        <section class="card rule-top span-4">
+          <h2>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-item" />
+            </svg>
+            Items
+          </h2>
+          <ul>
+            <li><a href="item.html">Chicken Burrito</a> — <a href="price.html">$8.95</a> — Shared by Alex, Sam</li>
+            <li><a href="item.html">Chips &amp; Salsa</a> — <a href="price.html">$4.00</a> — Shared by Alex</li>
+          </ul>
+        </section>
+      
+        <section class="card rule-top span-4">
+          <h2>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-dollar" />
+            </svg>
+            Charges
+          </h2>
+          <dl class="props">
+            <dt>Tax</dt><dd><a href="tax.html">$1.16</a></dd>
+            <dt>Tip</dt><dd><a href="tip.html">$2.00</a></dd>
+            <dt>Discount</dt><dd><a href="discount.html">$0.00</a></dd>
+            <dt>Total</dt><dd><a href="total.html">$16.11</a></dd>
+          </dl>
+        </section>
+      
+        <section class="card rule-top span-4">
+          <sr-ticket
+            from="Sam"
+            to="Alex"
+            amount="12.40"
+            href="/ticket.html"
+            status="open"
+          >
+            View / Mark Paid
+          </sr-ticket>
+        </section>
+      </div>
+    </main>
+  </mu-auth>
   <script type="module">
     import { define } from "@calpoly/mustang";
     import { SrTicketElement } from "/src/sr-ticket.ts";
@@ -114,6 +117,17 @@
     define({
       "sr-ticket": SrTicketElement
     });
+  </script>
+  <script type="module">
+    import { define, Auth } from "@calpoly/mustang";
+    import { SrHeaderElement } from "/src/header.js";
+
+    define({
+      "mu-auth": Auth.Provider,
+      "sr-header": SrHeaderElement
+    });
+
+    SrHeaderElement.initializeOnce?.();
   </script>
 
 

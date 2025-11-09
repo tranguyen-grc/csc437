@@ -12,65 +12,70 @@
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
     <script type="module" src="/scripts/theme.js"></script>
-    <script type="module" crossorigin src="/assets/main-rJntgcuO.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-CErIJbA5.js">
-    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-list-CQYvE-VH.js">
+    <script type="module" crossorigin src="/assets/main-Soh3uVMd.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/state-A8dMvlyH.js">
+    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-SdLfZcgt.js">
+    <link rel="modulepreload" crossorigin href="/assets/sr-ticket-list-DvpP9SlC.js">
+    <link rel="modulepreload" crossorigin href="/assets/header-DpmMVMPx.js">
   </head>
   <body>
-    <header class="app-header">
-      <div class="brand">
-        <a href="index.html" class="brand-link">
-          <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
-          SplitRoom
-        </a>
-      </div>
+    <mu-auth provides="splitroom:auth">
+      <sr-header></sr-header>
 
-      <label id="theme-toggle" class="theme-toggle">
-        <input id="theme-input" type="checkbox" autocomplete="off" />
-        Dark mode
-      </label>
-
-      <nav class="top-nav">
-        <a href="group.html">Groups</a>
-        <a href="receipt.html">Receipts</a>
-        <a href="member.html">
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-user" />
-          </svg>
-          Alex
-        </a>
-      </nav>
-    </header>
-
-    <div class="title"></div>
-
-    <main class="page">
-      <div class="grid">
-
-        <section class="card span-12">
-          <h2>
+      <!-- <header class="app-header">
+        <div class="brand">
+          <a href="index.html" class="brand-link">
+            <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+            SplitRoom
+          </a>
+        </div>
+  
+        <label id="theme-toggle" class="theme-toggle">
+          <input id="theme-input" type="checkbox" autocomplete="off" />
+          Dark mode
+        </label>
+  
+        <nav class="top-nav">
+          <a href="group.html">Groups</a>
+          <a href="receipt.html">Receipts</a>
+          <a href="member.html">
             <svg class="icon">
-              <use href="/icons/receipt.svg#icon-house" />
+              <use href="/icons/receipt.svg#icon-user" />
             </svg>
-            Roommate Groups
-          </h2>
-          <p><a href="group.html">
-            <svg class="icon">
-          <use href="/icons/receipt.svg#icon-plus" />
-        </svg>
-            Create or Access a Group
-          </a></p>
-        </section>
+            Alex
+          </a>
+        </nav>
+      </header> -->
   
-        <section class="card rule-top span-12">
-          <h2>Your Dashboard</h2>
+      <div class="title"></div>
   
-          <h3>Open Tickets</h3>
-          <sr-ticket-list></sr-ticket-list>
-        </section>
-      </div>
-    </main>
+      <main class="page">
+        <div class="grid">
+  
+          <section class="card span-12">
+            <h2>
+              <svg class="icon">
+                <use href="/icons/receipt.svg#icon-house" />
+              </svg>
+              Roommate Groups
+            </h2>
+            <p><a href="group.html">
+              <svg class="icon">
+            <use href="/icons/receipt.svg#icon-plus" />
+          </svg>
+              Create or Access a Group
+            </a></p>
+          </section>
+    
+          <section class="card rule-top span-12">
+            <h2>Your Dashboard</h2>
+    
+            <h3>Open Tickets</h3>
+            <sr-ticket-list></sr-ticket-list>
+          </section>
+        </div>
+      </main>
+    </mu-auth>
 
     
 

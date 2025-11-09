@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { property, state } from "lit/decorators.js";
+import { Auth, Observer } from "@calpoly/mustang";
 
 type Ticket = {
   from: string;
@@ -12,8 +13,18 @@ type Ticket = {
 
 export class SrTicketListElement extends LitElement {
   @property() src?: string;
-
   @state() private tickets: Ticket[] = [];
+
+  _authObserver = new Observer<Auth.Model>(this, "splitroom:auth");
+  _user?: Auth.User;
+
+  get authorization() {
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${(this._user as Auth.AuthenticatedUser).token}`
+      }
+    );
+  }
 
   static styles = css`
     :host {
@@ -27,19 +38,33 @@ export class SrTicketListElement extends LitElement {
     li { margin: var(--space-2) 0; }
   `;
 
-  // connectedCallback() {
-  //   super.connectedCallback();
-  //   if (this.src) this.hydrate(this.src);
-  // }
   connectedCallback() {
-  super.connectedCallback();
-  const url = this.src || "/api/tickets";
-  this.hydrate(url);
+    super.connectedCallback();
+    // React when auth state arrives/changes
+    this._authObserver.observe((auth) => {
+      this._user = auth.user;
+      if (this._user?.authenticated) {
+        this.hydrate(this.src || "/api/tickets");
+      }
+    });
+  }
+
+  protected updated(changed: Map<string, unknown>) {
+    // If src changes and we're authenticated, refetch
+    if (changed.has("src") && this._user?.authenticated) {
+      this.hydrate(this.src || "/api/tickets");
+    }
   }
 
   private async hydrate(url: string) {
     try {
-      const res = await fetch(url, { credentials: "same-origin" });
+      const headers = {
+        "Content-Type": "application/json",
+        ...(this.authorization || {})
+      };
+      console.log("Auth header going out:", headers.Authorization);
+
+      const res = await fetch(url, { headers });
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const json = (await res.json()) as Ticket[] | Ticket;
       this.tickets = Array.isArray(json) ? json : [json];

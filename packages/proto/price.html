@@ -14,50 +14,64 @@
   <script type="module" src="/scripts/theme.js"></script>
 </head>
 <body>
-  <header class="app-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">
-        <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
-        SplitRoom
-      </a>
-    </div>
-
-    <label id="theme-toggle" class="theme-toggle">
-      <input id="theme-input" type="checkbox" autocomplete="off" />
-      Dark mode
-    </label>
-
-    <nav class="top-nav">
-      <a href="group.html">Groups</a>
-      <a href="receipt.html">Receipts</a>
-      <a href="member.html">
-        <svg class="icon">
-          <use href="/icons/receipt.svg#icon-user" />
-        </svg>
-        Alex
-      </a>
-    </nav>
-  </header>
-
-  <main class="page">
-
-    <div class="title">
-      <p><a href="item.html">
-        <svg class="icon">
-          <use href="/icons/receipt.svg#icon-back" />
-        </svg>
-        Back to Item
-      </a></p>
-    </div>
+  <mu-auth provides="splitroom:auth">
+    <sr-header></sr-header>
+    <!-- <header class="app-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">
+          <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+          SplitRoom
+        </a>
+      </div>
   
-    <section class="card">
-      <h1>Price</h1>
-      <dl class="props">
-        <dt>Amount</dt><dd>8.95</dd>
-        <dt>Currency</dt><dd>USD</dd>
-        <dt>Applies To</dt><dd><a href="item.html">Chicken Burrito</a></dd>
-      </dl>
-    </section>
-  </main>
+      <label id="theme-toggle" class="theme-toggle">
+        <input id="theme-input" type="checkbox" autocomplete="off" />
+        Dark mode
+      </label>
+  
+      <nav class="top-nav">
+        <a href="group.html">Groups</a>
+        <a href="receipt.html">Receipts</a>
+        <a href="member.html">
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-user" />
+          </svg>
+          Alex
+        </a>
+      </nav>
+    </header> -->
+  
+    <main class="page">
+  
+      <div class="title">
+        <p><a href="item.html">
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-back" />
+          </svg>
+          Back to Item
+        </a></p>
+      </div>
+    
+      <section class="card">
+        <h1>Price</h1>
+        <dl class="props">
+          <dt>Amount</dt><dd>8.95</dd>
+          <dt>Currency</dt><dd>USD</dd>
+          <dt>Applies To</dt><dd><a href="item.html">Chicken Burrito</a></dd>
+        </dl>
+      </section>
+    </main>
+  </mu-auth>
+  <script type="module">
+    import { define, Auth } from "@calpoly/mustang";
+    import { SrHeaderElement } from "/src/header.js";
+
+    define({
+      "mu-auth": Auth.Provider,
+      "sr-header": SrHeaderElement
+    });
+
+    SrHeaderElement.initializeOnce?.();
+  </script>
 </body>
 </html>

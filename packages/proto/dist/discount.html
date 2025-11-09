@@ -12,54 +12,60 @@
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/page.css" />
   <script type="module" src="/scripts/theme.js"></script>
-  <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
+  <script type="module" crossorigin src="/assets/discount-BaXHji6d.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/state-A8dMvlyH.js">
+  <link rel="modulepreload" crossorigin href="/assets/header-DpmMVMPx.js">
 </head>
 <body>
-  <header class="app-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">
-        <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
-        SplitRoom
-      </a>
-    </div>
+  <mu-auth provides="splitroom:auth">
+    <sr-header></sr-header>
 
-    <label id="theme-toggle" class="theme-toggle">
-      <input id="theme-input" type="checkbox" autocomplete="off" />
-      Dark mode
-    </label>
-
-    <nav class="top-nav">
-      <a href="group.html">Groups</a>
-      <a href="receipt.html">Receipts</a>
-      <a href="member.html">
-        <svg class="icon">
-          <use href="/icons/receipt.svg#icon-user" />
-        </svg>
-        Alex
-      </a>
-    </nav>
-  </header>
-
-  <main class="page">
-
-    <div class="title">
-      <p><a href="receipt.html">
-        <svg class="icon">
-          <use href="/icons/receipt.svg#icon-back" />
-        </svg>
-        Back to Receipt
-      </a></p>
-    </div>
-    
-    <section class="card">
-      <h1>Discount</h1>
-      <dl class="props">
-        <dt>Amount</dt><dd>0.00</dd>
-        <dt>Currency</dt><dd>USD</dd>
-        <dt>Reason</dt><dd>Promo code</dd>
-        <dt>Receipt</dt><dd><a href="receipt.html">Receipt</a></dd>
-      </dl>
-    </section>
-  </main>
+    <!-- <header class="app-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">
+          <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+          SplitRoom
+        </a>
+      </div>
+  
+      <label id="theme-toggle" class="theme-toggle">
+        <input id="theme-input" type="checkbox" autocomplete="off" />
+        Dark mode
+      </label>
+  
+      <nav class="top-nav">
+        <a href="group.html">Groups</a>
+        <a href="receipt.html">Receipts</a>
+        <a href="member.html">
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-user" />
+          </svg>
+          Alex
+        </a>
+      </nav>
+    </header> -->
+  
+    <main class="page">
+  
+      <div class="title">
+        <p><a href="receipt.html">
+          <svg class="icon">
+            <use href="/icons/receipt.svg#icon-back" />
+          </svg>
+          Back to Receipt
+        </a></p>
+      </div>
+      
+      <section class="card">
+        <h1>Discount</h1>
+        <dl class="props">
+          <dt>Amount</dt><dd>0.00</dd>
+          <dt>Currency</dt><dd>USD</dd>
+          <dt>Reason</dt><dd>Promo code</dd>
+          <dt>Receipt</dt><dd><a href="receipt.html">Receipt</a></dd>
+        </dl>
+      </section>
+    </main>
+  </mu-auth>
 </body>
 </html>

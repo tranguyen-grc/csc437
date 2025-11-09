@@ -14,96 +14,110 @@
   <script type="module" src="/scripts/theme.js"></script>
 </head>
 <body>
-  <header class="app-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">
-        <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
-        SplitRoom
-      </a>
-    </div>
-
-    <label id="theme-toggle" class="theme-toggle">
-      <input id="theme-input" type="checkbox" autocomplete="off" />
-      Dark mode
-    </label>
-
-    <nav class="top-nav">
-      <a href="group.html">Groups</a>
-      <a href="receipt.html">Receipts</a>
-      <a href="member.html">
-        <svg class="icon">
-          <use href="/icons/receipt.svg#icon-user" />
-        </svg>
-        Alex
-      </a>
-    </nav>
-  </header>
-
-  <div class="title"></div>
-
-  <main class="page">
-    <div class="grid">
-      <section class="card span-12">
-        <h1>
+  <mu-auth provides="splitroom:auth">
+    <sr-header></sr-header>
+    <!-- <header class="app-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">
+          <svg class="icon outline"><use href="/icons/receipt.svg#icon-house"></use></svg>
+          SplitRoom
+        </a>
+      </div>
+  
+      <label id="theme-toggle" class="theme-toggle">
+        <input id="theme-input" type="checkbox" autocomplete="off" />
+        Dark mode
+      </label>
+  
+      <nav class="top-nav">
+        <a href="group.html">Groups</a>
+        <a href="receipt.html">Receipts</a>
+        <a href="member.html">
           <svg class="icon">
-            <use href="/icons/receipt.svg#icon-house" />
+            <use href="/icons/receipt.svg#icon-user" />
           </svg>
-          House 1
-        </h1>
-    
-        <h2>Members</h2>
-        <ul>
-          <li><a href="member.html">Alex</a></li>
-          <li><a href="member.html">Sam</a></li>
-          <li><a href="member.html">Jordan</a></li>
-        </ul>
-      </section>
+          Alex
+        </a>
+      </nav>
+    </header> -->
+  
+    <div class="title"></div>
+  
+    <main class="page">
+      <div class="grid">
+        <section class="card span-12">
+          <h1>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-house" />
+            </svg>
+            House 1
+          </h1>
       
-    
-      <section class="card rule-top span-6">
-        <h2>
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-receipt" />
-          </svg>
-          Receipts
-        </h2>
-        <p><a href="receipt.html">
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-plus" />
-          </svg>
-          Add a receipt
-        </a></p>
-        <ul>
-          <li><a href="receipt.html">Receipt — Taqueria El Sol</a></li>
-        </ul>
-      </section>
-    
-      <section class="card rule-top span-6">
-        <h2>
-          <svg class="icon">
-            <use href="/icons/receipt.svg#icon-trading" />
-          </svg>
-          Open Tickets
-        </h2>
-          <sr-ticket-list></sr-ticket-list>
-
-      </section>
-    </div>
-  </main>
+          <h2>Members</h2>
+          <ul>
+            <li><a href="member.html">Alex</a></li>
+            <li><a href="member.html">Sam</a></li>
+            <li><a href="member.html">Jordan</a></li>
+          </ul>
+        </section>
+        
+      
+        <section class="card rule-top span-6">
+          <h2>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-receipt" />
+            </svg>
+            Receipts
+          </h2>
+          <p><a href="receipt.html">
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-plus" />
+            </svg>
+            Add a receipt
+          </a></p>
+          <ul>
+            <li><a href="receipt.html">Receipt — Taqueria El Sol</a></li>
+          </ul>
+        </section>
+      
+        <section class="card rule-top span-6">
+          <h2>
+            <svg class="icon">
+              <use href="/icons/receipt.svg#icon-trading" />
+            </svg>
+            Open Tickets
+          </h2>
+            <sr-ticket-list></sr-ticket-list>
+  
+        </section>
+      </div>
+    </main>
+  </mu-auth>
 
   <script type="module">
-      import { define } from "@calpoly/mustang";
-      import { SrTicketElement } from "/src/sr-ticket.ts";
+    import { define } from "@calpoly/mustang";
+    import { SrTicketElement } from "/src/sr-ticket.ts";
 
-      define({
-        "sr-ticket": SrTicketElement
-      });
-    </script>
-    <script type="module">
-      import { define } from "@calpoly/mustang";
-      import { SrTicketListElement } from "/src/sr-ticket-list.js";
-      define({ "sr-ticket-list": SrTicketListElement });
-    </script>
+    define({
+      "sr-ticket": SrTicketElement
+    });
+  </script>
+  <script type="module">
+    import { define } from "@calpoly/mustang";
+    import { SrTicketListElement } from "/src/sr-ticket-list.js";
+    define({ "sr-ticket-list": SrTicketListElement });
+  </script>
+  <script type="module">
+    import { define, Auth } from "@calpoly/mustang";
+    import { SrHeaderElement } from "/src/header.js";
+
+    define({
+      "mu-auth": Auth.Provider,
+      "sr-header": SrHeaderElement
+    });
+
+    SrHeaderElement.initializeOnce?.();
+  </script>
 
 </body>
 </html>

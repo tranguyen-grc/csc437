@@ -132,6 +132,120 @@ svg.icon {
 .span-4  { grid-column: span 4; }
 .span-3  { grid-column: span 3; }
 
+form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Stack label text and control */
+label {
+  display: grid;
+  gap: var(--space-1);
+  color: var(--color-text);
+  font-size: var(--font-size-1);
+}
+
+/* Optional helper text inside labels */
+label small,
+.form-hint {
+  color: var(--color-muted, #6b7280);
+  font-size: 0.9em;
+}
+
+/* Text inputs, selects, textareas */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+  appearance: none;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: var(--border-1);
+  border-radius: var(--radius-1);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  line-height: 1.25;
+  outline: none;
+}
+
+/* Focus state using accent color */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="url"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+/* Invalid state (if you add .is-invalid to the control) */
+.is-invalid {
+  border-color: var(--color-error, #b00020);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-error, #b00020) 30%, transparent);
+}
+
+/* Buttons */
+button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5ch;
+  padding: 0.55rem 0.9rem;
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-1);
+  border: 1px solid transparent;
+  background: var(--color-accent);
+  color: var(--color-text-on-accent, #fff);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover,
+.button:hover {
+  filter: brightness(1.03);
+}
+
+button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Secondary / outline style if needed */
+.button--outline {
+  background: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.button--outline:hover {
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+}
+
+/* Actions row under forms */
+.form-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-start;
+}
+
+/* Error message block */
+.form-error,
+.error {
+  color: var(--color-error, #b00020);
+  border: 1px solid var(--color-error, #b00020);
+  background: color-mix(in srgb, var(--color-error, #b00020) 12%, transparent);
+  padding: var(--space-2);
+  border-radius: var(--radius-1);
+}
+
 @media (max-width: 1200px) {
   .grid { grid-template-columns: repeat(8, 1fr); }
   .span-9 { grid-column: span 8; }
@@ -149,6 +263,13 @@ svg.icon {
   .span-12, .span-9, .span-8, .span-6, .span-4, .span-3 { grid-column: span 4; }
 
   .page { padding: var(--space-4); }
+
+  form {
+    gap: var(--space-2);
+  }
+  label {
+    gap: 0.35rem;
+  }
 }
 
 .theme-toggle {
