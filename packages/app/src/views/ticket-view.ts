@@ -1,19 +1,11 @@
-import { LitElement, html, css } from "lit";
-import { property, state } from "lit/decorators.js";
-import { Auth, Observer } from "@calpoly/mustang";
+import { Auth, Observer, View } from "@calpoly/mustang";
+import { html, css } from "lit";
+import { property } from "lit/decorators.js";
+import { Ticket } from "server/models";
+import { Msg } from "../messages";
+import { Model } from "../model";
 
-
-type Ticket = {
-  id: string;
-  from: string;
-  to: string;
-  amount: number;
-  status: "open" | "paid";
-  href?: string;
-  label?: string;
-};
-
-export class TicketViewElement extends LitElement {
+export class TicketViewElement extends View<Model, Msg> {
   static styles = css`
     :host {
       display: block;
@@ -117,79 +109,91 @@ export class TicketViewElement extends LitElement {
   `;
 
   @property({ attribute: "ticket-id" }) ticketId?: string;
-  @state() ticket?: Ticket;
 
   private _auth = new Observer<Auth.Model>(this, "splitroom:auth");
-  private _user?: Auth.User;
+  private _authenticated = false;
+
+  constructor() {
+    super("splitroom:model");
+  }
 
   connectedCallback() {
     super.connectedCallback();
     this._auth.observe((auth) => {
-      this._user = auth.user;
-      if (this.ticketId) this.load(this.ticketId);
-    });
-  }
-
-  get authorization() {
-    return (
-      this._user?.authenticated && {
-        Authorization: `Bearer ${(this._user as Auth.AuthenticatedUser).token}`
+      this._authenticated = Boolean(auth.user?.authenticated);
+      if (this._authenticated && this.ticketId) {
+        this.dispatchMessage(["ticket/request", { ticketid: this.ticketId }]);
       }
-    );
+    });
   }
 
-  async load(id: string) {
-    const res = await fetch(`/api/tickets/${id}`, {
-      headers: this.authorization || {}
-    });
-    this.ticket = res.ok ? await res.json() : undefined;
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    newValue: string | null
+  ) {
+    super.attributeChangedCallback(name, oldValue, newValue);
+    if (
+      name === "ticket-id" &&
+      newValue &&
+      newValue !== oldValue &&
+      this._authenticated
+    ) {
+      this.dispatchMessage(["ticket/request", { ticketid: newValue }]);
+    }
   }
 
   render() {
-    const t = this.ticket;
-    if (!t) return html`<p class="card">Loading…</p>`;
+    const { ticket, loading, error } = this.model ?? {};
+    if (loading) return html`<p class="card">Loading…</p>`;
+    if (error) return html`<p class="card">Failed to load: ${error}</p>`;
+    const t = ticket;
+    if (!t) return html`<p class="card">No ticket loaded.</p>`;
+
     return html`
       <main class="page">
-      <div class="grid">
-  
-        <div class="title span-12">
-          <p><a href="/app/groups">
-            <svg class="icon">
-              <use href="/icons/receipt.svg#icon-back" />
-            </svg>
-            Back to Group
-          </a></p>
-        </div>
-      
-        <section class="card span-12">
-          <h1>
-            <svg class="icon">
-              <use href="/icons/receipt.svg#icon-trading" />
-            </svg>
-            Ticket
-          </h1>
-          <p><strong>Sam → Alex: $12.40</strong></p>
-        </section>
-      
-        <section class="card rule-top span-12">
-          <h2>Details</h2>
-          <ul>
-            <li><a href="/app/groups">
+        <div class="grid">
+          <div class="title span-12">
+            <p>
+              <a href="/app/groups">
+                <svg class="icon">
+                  <use href="/icons/receipt.svg#icon-back" />
+                </svg>
+                Back to Group
+              </a>
+            </p>
+          </div>
+
+          <section class="card span-12">
+            <h1>
               <svg class="icon">
-                <use href="/icons/receipt.svg#icon-receipt" />
+                <use href="/icons/receipt.svg#icon-trading" />
               </svg>
-              Receipt
-            </a></li>
-          </ul>
-      
-          <h3>Status</h3>
-          <p>Open</p>
-      
-          <h3>Action</h3>
-        </section>
-      </div>
-      
-    </main>
+              Ticket
+            </h1>
+            <p><strong>${t.from} → ${t.to}: $${Number(t.amount).toFixed(2)}</strong></p>
+          </section>
+
+          <section class="card rule-top span-12">
+            <h2>Details</h2>
+            <ul>
+              <li>
+                <a href="/app/groups">
+                  <svg class="icon">
+                    <use href="/icons/receipt.svg#icon-receipt" />
+                  </svg>
+                  Receipt
+                </a>
+              </li>
+            </ul>
+
+            <h3>Status</h3>
+            <p>${t.status === "paid" ? "Paid" : "Open"}</p>
+
+            <h3>Action</h3>
+          </section>
+        </div>
+      </main>
     `;
   }
 }

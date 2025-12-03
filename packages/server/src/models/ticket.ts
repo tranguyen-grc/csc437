@@ -1,6 +1,7 @@
 export type TicketStatus = "open" | "paid";
 
 export interface Ticket {
+  id?: string;        // Client-facing id (toJSON transform)
   _id?: string;       // Mongo ObjectId (server-side)
   from: string;
   to: string;

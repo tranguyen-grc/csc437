@@ -11,16 +11,18 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    <script type="module" crossorigin src="/assets/index-D6CKa1bJ.js"></script>
+    <script type="module" crossorigin src="/assets/index-CUyRFxFZ.js"></script>
   </head>
   <body>
     <mu-history provides="splitroom:history">
       <mu-auth provides="splitroom:auth" redirect="/login">
-        <article class="page"> 
-          <sr-header></sr-header>
-          <mu-switch></mu-switch>
-        </article>
+        <mu-store provides="splitroom:model">
+          <article class="page"> 
+            <sr-header></sr-header>
+            <mu-switch></mu-switch>
+          </article>
+        </mu-store>
       </mu-auth>
-    </mu-history>
+    </mu-history>
   </body>
 </html>
