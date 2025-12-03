@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Expense Splitter — Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <script type="module" crossorigin src="/assets/index-D6CKa1bJ.js"></script>
+  </head>
+  <body>
+    <mu-history provides="splitroom:history">
+      <mu-auth provides="splitroom:auth" redirect="/login">
+        <article class="page"> 
+          <sr-header></sr-header>
+          <mu-switch></mu-switch>
+        </article>
+      </mu-auth>
+    </mu-history>
+  </body>
+</html>

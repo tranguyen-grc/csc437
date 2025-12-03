@@ -397,7 +397,7 @@ export class HomeViewElement extends LitElement {
               <span>Roommate Groups</span>
             </h2>
             <p>
-              <a href="group.html" class="icon-text">
+              <a href="/app/groups" class="icon-text">
                 <svg class="icon" aria-hidden="true" focusable="false">
                   <use href="/icons/receipt.svg#icon-plus"></use>
                 </svg>

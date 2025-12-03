@@ -5,23 +5,19 @@ import { Auth, Observer } from "@calpoly/mustang";
 type Ticket = {
   from: string;
   to: string;
-  amount: string;
+  amount: string;  
   href: string;
   status: "open" | "paid" | string;
-  label?: string;
+  label?: string;   
 };
 
 export class SrTicketListElement extends LitElement {
-  // ✅ driven by route: <sr-ticket-list user-id="hunter">
-  @property({ attribute: "user-id" })
-  userId?: string;
-
+  @property() src?: string;
   @state() private tickets: Ticket[] = [];
 
   _authObserver = new Observer<Auth.Model>(this, "splitroom:auth");
   _user?: Auth.User;
 
-  // 🔐 build Authorization header from JWT in <mu-auth>
   get authorization() {
     return (
       this._user?.authenticated && {
@@ -30,61 +26,46 @@ export class SrTicketListElement extends LitElement {
     );
   }
 
-  // 🧠 compute API URL from userId (adjust to match your API)
-  get src() {
-    // If you later add per-user filtering, change this:
-    // `/api/tickets?user=${encodeURIComponent(this.userId!)}`
-    return "/api/tickets";
-  }
-
   static styles = css`
     :host {
       display: contents;
     }
-    ul,
-    li {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    ul, li {
+        list-style: none; 
+        padding: 0;
+        margin: 0;
     }
-    li {
-      margin: var(--space-2) 0;
-    }
+    li { margin: var(--space-2) 0; }
   `;
 
   connectedCallback() {
     super.connectedCallback();
-
+    // React when auth state arrives/changes
     this._authObserver.observe((auth) => {
       this._user = auth.user;
-
-      // once auth arrives, fetch tickets for current userId (or all)
       if (this._user?.authenticated) {
-        this.hydrate();
+        this.hydrate(this.src || "/api/tickets");
       }
     });
   }
 
   protected updated(changed: Map<string, unknown>) {
-    // If user-id changes and we're authenticated, refetch
-    if (changed.has("userId") && this._user?.authenticated) {
-      this.hydrate();
+    // If src changes and we're authenticated, refetch
+    if (changed.has("src") && this._user?.authenticated) {
+      this.hydrate(this.src || "/api/tickets");
     }
   }
 
-  private async hydrate() {
+  private async hydrate(url: string) {
     try {
       const headers = {
         "Content-Type": "application/json",
         ...(this.authorization || {})
       };
-
-      console.log("Fetching tickets from", this.src);
       console.log("Auth header going out:", headers.Authorization);
 
-      const res = await fetch(this.src, { headers });
+      const res = await fetch(url, { headers });
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-
       const json = (await res.json()) as Ticket[] | Ticket;
       this.tickets = Array.isArray(json) ? json : [json];
     } catch (err) {
@@ -110,6 +91,6 @@ export class SrTicketListElement extends LitElement {
   }
 
   override render() {
-    return html`<ul>${this.tickets.map((t) => this.renderTicket(t))}</ul>`;
+    return html`${this.tickets.map((t) => this.renderTicket(t))}`;
   }
 }

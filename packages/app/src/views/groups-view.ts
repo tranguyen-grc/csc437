@@ -144,9 +144,9 @@ export class GroupsViewElement extends LitElement {
 
             <h2>Members</h2>
             <ul>
-              <li><a href="member.html">Alex</a></li>
-              <li><a href="member.html">Sam</a></li>
-              <li><a href="member.html">Jordan</a></li>
+              <li><a href="/app/groups">Alex</a></li>
+              <li><a href="/app/groups">Sam</a></li>
+              <li><a href="/app/groups">Jordan</a></li>
             </ul>
           </section>
 
@@ -158,7 +158,7 @@ export class GroupsViewElement extends LitElement {
               Receipts
             </h2>
             <p>
-              <a href="receipt.html">
+              <a href="/app/groups">
                 <svg class="icon">
                   <use href="/icons/receipt.svg#icon-plus" />
                 </svg>
@@ -166,7 +166,7 @@ export class GroupsViewElement extends LitElement {
               </a>
             </p>
             <ul>
-              <li><a href="receipt.html">Receipt — Taqueria El Sol</a></li>
+              <li><a href="/app/groups">Receipt — Taqueria El Sol</a></li>
             </ul>
           </section>
 
