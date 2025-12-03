@@ -12,7 +12,6 @@ type Ticket = {
 };
 
 export class SrTicketListElement extends LitElement {
-  // ✅ driven by route: <sr-ticket-list user-id="hunter">
   @property({ attribute: "user-id" })
   userId?: string;
 

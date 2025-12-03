@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,700;1,14..32,400&family=Source+Serif+4:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles/reset.css" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/page.css" />
+  <script type="module">
+    import { define, Auth } from "@calpoly/mustang";
+    import { LoginFormElement } from "/src/auth/login-form";
+
+    define({
+      "mu-auth": Auth.Provider,
+      "login-form": LoginFormElement
+    });
+  </script>
+</head>
+<body class="page">
+  <mu-auth provides="splitroom:auth">
+    <h2>User Login</h2>
+      <main class="card">
+        <login-form api="/auth/login">
+          <label>
+            <span>Username:</span>
+            <input type="text" name="username" autocomplete="off" />
+          </label>
+          <label>
+            <span>Password:</span>
+            <input type="password" name="password" />
+          </label>
+        </login-form>
+      </main>
+      <p
+        >Or did you want to
+            <a href="newuser.html">Sign up as a new user</a>?
+      </p>
+    </mu-auth>
+  </body>
+</html>
