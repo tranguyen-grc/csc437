@@ -1,4 +1,4 @@
-import { Auth, Observer, View } from "@calpoly/mustang";
+import { Auth, Form, History, Observer, View, define } from "@calpoly/mustang";
 import { html, css } from "lit";
 import { property } from "lit/decorators.js";
 import { Ticket } from "server/models";
@@ -6,6 +6,10 @@ import { Msg } from "../messages";
 import { Model } from "../model";
 
 export class TicketViewElement extends View<Model, Msg> {
+  static uses = define({
+    "mu-form": Form.Element
+  });
+
   static styles = css`
     :host {
       display: block;
@@ -106,6 +110,53 @@ export class TicketViewElement extends View<Model, Msg> {
         padding: var(--space-4);
       }
     }
+
+    mu-form {
+      display: grid;
+      gap: var(--space-2);
+      max-width: 24rem;
+      margin-top: var(--space-2);
+    }
+
+    .field {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .field span {
+      font-weight: 600;
+      color: var(--color-muted, #6b7280);
+    }
+
+    .field input,
+    .field select {
+      padding: 0.5rem 0.6rem;
+      border: var(--border-1);
+      border-radius: var(--radius-1);
+      background: var(--color-card-bg);
+      color: var(--color-text);
+      font: inherit;
+    }
+
+    .actions {
+      display: flex;
+      gap: var(--space-2);
+      align-items: center;
+    }
+
+    button {
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-1);
+      border: none;
+      background: var(--color-accent);
+      color: var(--color-bg-page);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
   `;
 
   @property({ attribute: "ticket-id" }) ticketId?: string;
@@ -145,7 +196,9 @@ export class TicketViewElement extends View<Model, Msg> {
 
   render() {
     const { ticket, loading, error } = this.model ?? {};
-    if (loading) return html`<p class="card">Loading…</p>`;
+    if (loading) {
+      return html`<p class="card">Loading...</p>`;
+    }
     if (error) return html`<p class="card">Failed to load: ${error}</p>`;
     const t = ticket;
     if (!t) return html`<p class="card">No ticket loaded.</p>`;
@@ -171,7 +224,11 @@ export class TicketViewElement extends View<Model, Msg> {
               </svg>
               Ticket
             </h1>
-            <p><strong>${t.from} → ${t.to}: $${Number(t.amount).toFixed(2)}</strong></p>
+            <p>
+              <strong
+                >${t.from} -> ${t.to}: $${Number(t.amount ?? 0).toFixed(2)}</strong
+              >
+            </p>
           </section>
 
           <section class="card rule-top span-12">
@@ -191,9 +248,52 @@ export class TicketViewElement extends View<Model, Msg> {
             <p>${t.status === "paid" ? "Paid" : "Open"}</p>
 
             <h3>Action</h3>
+            <mu-form
+              .init=${{ status: t.status, label: t.label }}
+              @mu-form:submit=${this.handleSubmit}
+            >
+              <label class="field">
+                <span>Label</span>
+                <input
+                  type="text"
+                  name="label"
+                  placeholder="Add a short note"
+                />
+              </label>
+
+              <label class="field">
+                <span>Status</span>
+                <select name="status">
+                  <option value="open">Open</option>
+                  <option value="paid">Paid</option>
+                </select>
+              </label>
+
+              <div class="actions">
+                <button type="submit">Save Ticket</button>
+              </div>
+            </mu-form>
           </section>
         </div>
       </main>
     `;
+  }
+
+  handleSubmit(event: Form.SubmitEvent<Partial<Ticket>>) {
+    if (!this.ticketId) return;
+
+    this.dispatchMessage([
+      "ticket/save",
+      {
+        ticketid: this.ticketId,
+        ticket: event.detail
+      },
+      {
+        onSuccess: () =>
+          History.dispatch(this, "history/navigate", { href: "/app/groups" }),
+        onFailure: (error: Error) =>
+          console.error("Failed to save ticket", error)
+      }
+    ]);
   }
 }

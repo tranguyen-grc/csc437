@@ -1,6 +1,5 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, css, html } from "lit";
 import { property } from "lit/decorators.js";
-// ⬇️ note the .css.ts path (and probably ../styles)
 import reset from "../styles/reset.css.ts";
 
 export class SrTicketElement extends LitElement {
@@ -12,17 +11,19 @@ export class SrTicketElement extends LitElement {
 
   override render() {
     const isPaid = this.status === "paid";
+    const numericAmount = Number(this.amount);
+    const displayAmount = Number.isFinite(numericAmount) ? numericAmount : 0;
 
     return html`
       <article class="ticket card ${isPaid ? "paid" : "open"}">
         <div class="line">
-          <span class="names">${this.from} → ${this.to}</span>
-          <a class="action" href=${this.href}>
+          <span class="names">${this.from} -> ${this.to}</span>
+          <span class="action">
             <slot>Details</slot>
-          </a>
+          </span>
         </div>
         <div class="line">
-          <span class="amount">$${Number(this.amount).toFixed(2)}</span>
+          <span class="amount">$${displayAmount.toFixed(2)}</span>
           <span class="status">${isPaid ? "Paid" : "Open"}</span>
         </div>
       </article>
@@ -77,12 +78,7 @@ export class SrTicketElement extends LitElement {
       }
 
       .action {
-        color: var(--color-link);
-        text-decoration: none;
-      }
-
-      .action:hover {
-        text-decoration: underline;
+        color: var(--color-text);
       }
     `
   ];

@@ -29,7 +29,6 @@ TicketSchema.set("toJSON", {
 
 const TicketModel = model<Ticket>("Ticket", TicketSchema);
 
-// --------- Service API ---------
 function index(): Promise<Ticket[]> {
   return TicketModel.find().sort({ createdAt: -1 }).lean();
 }

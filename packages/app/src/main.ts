@@ -7,15 +7,7 @@ import { SrTicketElement } from "./components/sr-ticket.ts";
 import { SrTicketListElement } from "./components/sr-ticket-list.ts";
 import { LoginFormElement } from "./auth/login-form.ts";
 import { AppStore } from "./store.ts";
-import { ProfileViewElement } from "./views/profile-view.ts";
 import { ReceiptViewElement } from "./views/receipt-view.ts";
-import { MemberViewElement } from "./views/member-view.ts";
-import { ItemViewElement } from "./views/item-view.ts";
-import { PriceViewElement } from "./views/price-view.ts";
-import { DiscountViewElement } from "./views/discount-view.ts";
-import { TaxViewElement } from "./views/tax-view.ts";
-import { TipViewElement } from "./views/tip-view.ts";
-import { TotalViewElement } from "./views/total-view.ts";
 
 // Views (we’ll add stubs next)
 import { HomeViewElement } from "./views/home-view.ts";
@@ -32,39 +24,6 @@ const routes = [
   {
     path: "/app/receipt",
     view: () => html`<receipt-view></receipt-view>`
-  },
-  {
-    path: "/app/member",
-    view: () => html`<member-view></member-view>`
-  },
-  {
-    path: "/app/item",
-    view: () => html`<item-view></item-view>`
-  },
-  {
-    path: "/app/price",
-    view: () => html`<price-view></price-view>`
-  },
-  {
-    path: "/app/discount",
-    view: () => html`<discount-view></discount-view>`
-  },
-  {
-    path: "/app/tax",
-    view: () => html`<tax-view></tax-view>`
-  },
-  {
-    path: "/app/tip",
-    view: () => html`<tip-view></tip-view>`
-  },
-  {
-    path: "/app/total",
-    view: () => html`<total-view></total-view>`
-  },
-  {
-    path: "/app/profile/:id",
-    view: (params: Switch.Params) =>
-      html`<profile-view user-id=${params.id}></profile-view>`
   },
   {
     path: "/app/tickets/:id",
@@ -100,15 +59,7 @@ define({
   "groups-view": GroupsViewElement,
   "ticket-view": TicketViewElement,
   "login-view": LoginViewElement,
-  "profile-view": ProfileViewElement,
   "receipt-view": ReceiptViewElement,
-  "member-view": MemberViewElement,
-  "item-view": ItemViewElement,
-  "price-view": PriceViewElement,
-  "discount-view": DiscountViewElement,
-  "tax-view": TaxViewElement,
-  "tip-view": TipViewElement,
-  "total-view": TotalViewElement,
   "sr-ticket": SrTicketElement,
   "sr-ticket-list": SrTicketListElement,
 
@@ -118,6 +69,25 @@ define({
       super(routes, "splitroom:history", "splitroom:auth");
     }
   }
+});
+
+// Dark mode toggle
+const THEME_KEY = "splitroom:darkmode";
+const savedTheme = localStorage.getItem(THEME_KEY);
+if (savedTheme !== null) {
+  const enable = savedTheme === "true";
+  document.body.classList.toggle("dark-mode", enable);
+  const input = document.querySelector<HTMLInputElement>("#theme-input");
+  if (input) input.checked = enable;
+}
+
+window.addEventListener("darkmode:toggle", (event: Event) => {
+  const checked = (event as CustomEvent<{ checked: boolean }>).detail?.checked;
+  const enable = Boolean(checked);
+  document.body.classList.toggle("dark-mode", enable);
+  localStorage.setItem(THEME_KEY, String(enable));
+  const input = document.querySelector<HTMLInputElement>("#theme-input");
+  if (input) input.checked = enable;
 });
 
 

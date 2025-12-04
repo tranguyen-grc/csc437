@@ -1,14 +1,12 @@
-import { LitElement, html, css } from "lit";
 import { Auth, Observer } from "@calpoly/mustang";
+import { LitElement, css, html } from "lit";
 import { property } from "lit/decorators.js";
 
 export class GroupsViewElement extends LitElement {
-  // @ts-ignore
   @property({ attribute: "user-id" })
   userId?: string;
 
   static styles = css`
-    /* Base "body" defaults mapped to host */
     :host {
       display: block;
       background-color: var(--color-bg-page);
@@ -19,7 +17,6 @@ export class GroupsViewElement extends LitElement {
       line-height: var(--line-height-body);
     }
 
-    /* Headings use display font */
     h1,
     h2,
     h3 {
@@ -41,7 +38,6 @@ export class GroupsViewElement extends LitElement {
       font-weight: var(--weight-bold);
     }
 
-    /* Links */
     a {
       color: var(--color-link);
       text-decoration: none;
@@ -50,7 +46,6 @@ export class GroupsViewElement extends LitElement {
       text-decoration: underline;
     }
 
-    /* Cards */
     .card {
       background-color: var(--color-card-bg);
       border: var(--border-1);
@@ -71,7 +66,6 @@ export class GroupsViewElement extends LitElement {
       vertical-align: text-bottom;
     }
 
-    /* Page + Grid */
     .page {
       max-width: var(--container-max);
       margin: 0 var(--space-2);
@@ -133,7 +127,6 @@ export class GroupsViewElement extends LitElement {
     return html`
       <main class="page">
         <div class="grid">
-
           <section class="card span-12">
             <h1>
               <svg class="icon">
@@ -144,9 +137,9 @@ export class GroupsViewElement extends LitElement {
 
             <h2>Members</h2>
             <ul>
-              <li><a href="/app/groups">Alex</a></li>
-              <li><a href="/app/groups">Sam</a></li>
-              <li><a href="/app/groups">Jordan</a></li>
+              <li>Alex</li>
+              <li>Sam</li>
+              <li>Jordan</li>
             </ul>
           </section>
 
@@ -158,7 +151,7 @@ export class GroupsViewElement extends LitElement {
               Receipts
             </h2>
             <p>
-              <a href="/app/groups">
+              <a href="/app/receipt">
                 <svg class="icon">
                   <use href="/icons/receipt.svg#icon-plus" />
                 </svg>
@@ -166,7 +159,7 @@ export class GroupsViewElement extends LitElement {
               </a>
             </p>
             <ul>
-              <li><a href="/app/groups">Receipt — Taqueria El Sol</a></li>
+              <li><a href="/app/receipt">Receipt — Taqueria El Sol</a></li>
             </ul>
           </section>
 
@@ -180,7 +173,6 @@ export class GroupsViewElement extends LitElement {
 
             <sr-ticket-list user-id=${this.userId ?? ""}></sr-ticket-list>
           </section>
-
         </div>
       </main>
     `;

@@ -32,6 +32,33 @@ export class SrTicketListElement extends View<Model, Msg> {
     .error {
       color: var(--color-error, #b00020);
     }
+    .ticket-card {
+      background: var(--color-card-bg);
+      border: var(--border-1);
+      border-radius: var(--radius-1);
+      padding: var(--space-2) var(--space-3);
+      color: var(--color-text);
+    }
+    .line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-block: 0.25rem;
+    }
+    .names {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .amount {
+      font-family: var(--font-family-mono);
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+    .status {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
   `;
 
   connectedCallback() {
@@ -44,19 +71,22 @@ export class SrTicketListElement extends View<Model, Msg> {
   }
 
   private renderTicket(t: Model["tickets"][number]) {
-    const href = t.href ?? (t.id ? `/app/tickets/${t.id}` : "#");
+    const ticketId = t.id ?? (t as any)._id?.toString?.() ?? "";
+    const amountNum = Number(t.amount ?? 0);
+    const displayAmount = Number.isFinite(amountNum) ? amountNum : 0;
 
     return html`
       <li>
-        <sr-ticket
-          .from=${t.from}
-          .to=${t.to}
-          .amount=${t.amount}
-          .href=${href}
-          .status=${t.status}
-        >
-          ${t.label ?? "Details"}
-        </sr-ticket>
+        <article class="ticket-card">
+          <div class="line">
+            <span class="names">${t.from} -> ${t.to}</span>
+            <span class="status">${t.status === "paid" ? "Paid" : "Open"}</span>
+          </div>
+          <div class="line">
+            <span class="amount">$${displayAmount.toFixed(2)}</span>
+            <span>${t.label ?? "Ticket"}</span>
+          </div>
+        </article>
       </li>
     `;
   }
@@ -67,7 +97,7 @@ export class SrTicketListElement extends View<Model, Msg> {
     const error = this.model?.error;
 
     if (loading) {
-      return html`<p class="muted">Loading tickets…</p>`;
+      return html`<p class="muted">Loading tickets...</p>`;
     }
 
     if (error) {
@@ -81,3 +111,4 @@ export class SrTicketListElement extends View<Model, Msg> {
     return html`<ul>${tickets.map((t) => this.renderTicket(t))}</ul>`;
   }
 }
+
